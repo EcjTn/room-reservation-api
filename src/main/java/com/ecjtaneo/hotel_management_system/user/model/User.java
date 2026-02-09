@@ -16,7 +16,7 @@ public class User {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.GUEST;
+    private UserRole role = UserRole.GUEST;
 
     @Column(nullable = false, unique = true)
     private String username;
