@@ -6,7 +6,7 @@ import com.ecjtaneo.hotel_management_system.common.exception.ResourceNotFoundExc
 import com.ecjtaneo.hotel_management_system.room.dto.RoomCreationDto;
 import com.ecjtaneo.hotel_management_system.room.dto.RoomPublicResponseDto;
 import com.ecjtaneo.hotel_management_system.room.model.Room;
-import com.ecjtaneo.hotel_management_system.user.mapper.RoomMapper;
+import com.ecjtaneo.hotel_management_system.room.mapper.RoomMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

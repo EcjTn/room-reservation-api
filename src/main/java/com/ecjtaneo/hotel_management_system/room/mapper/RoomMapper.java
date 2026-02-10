@@ -1,4 +1,4 @@
-package com.ecjtaneo.hotel_management_system.user.mapper;
+package com.ecjtaneo.hotel_management_system.room.mapper;
 
 import com.ecjtaneo.hotel_management_system.room.dto.RoomCreationDto;
 import com.ecjtaneo.hotel_management_system.room.dto.RoomPublicResponseDto;

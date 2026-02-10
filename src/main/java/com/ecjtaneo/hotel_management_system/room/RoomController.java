@@ -18,7 +18,7 @@ public class RoomController {
     }
 
     @GetMapping
-    public List<RoomPublicResponseDto> showRooms(@RequestParam(name = "cursor") Long cursor) {
+    public List<RoomPublicResponseDto> showRooms(@RequestParam(name = "cursor", required = false) Long cursor) {
         if(cursor == null) return roomService.showRooms();
         return roomService.showRoomsAfter(cursor);
     }
