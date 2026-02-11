@@ -20,6 +20,11 @@ public class RoomController {
         this.roomService = roomService;
     }
 
+    @GetMapping("/{roomNumber}")
+    public RoomPublicResponseDto showRoomByRoomNumber(@PathVariable String roomNumber) {
+        return roomService.findByRoomNumber(roomNumber);
+    }
+
     @GetMapping
     public List<RoomPublicResponseDto> showRooms(@RequestParam(name = "cursor", required = false) Long cursor) {
         if(cursor == null) return roomService.showRooms();

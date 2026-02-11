@@ -49,9 +49,9 @@ public class RoomService {
         return roomMapper.toDtoList(roomRepository.findTop10ByStatusAndTypeAndIdLessThanOrderByIdDesc(lastSeenId, status, type));
     }
 
-    public Room findByRoomNumber(String roomNumber) {
-        return roomRepository.findByRoomNumber(roomNumber)
-                .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
+    public RoomPublicResponseDto findByRoomNumber(String roomNumber) {
+        return roomMapper.toDtoSingle(roomRepository.findByRoomNumber(roomNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Room not found.")));
     }
 
     @Transactional
