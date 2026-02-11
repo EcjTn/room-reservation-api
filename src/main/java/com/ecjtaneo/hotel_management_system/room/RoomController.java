@@ -22,7 +22,7 @@ public class RoomController {
     @GetMapping
     public List<RoomPublicResponseDto> showRooms(@RequestParam(name = "cursor", required = false) Long cursor) {
         if(cursor == null) return roomService.showRooms();
-        return roomService.showRoomsAfter(cursor);
+        return roomService.showRoomsBefore(cursor);
     }
 
     @GetMapping("/filters")
@@ -32,7 +32,7 @@ public class RoomController {
             @RequestParam(name = "cursor", required = false) Long cursor
     ) {
         if(cursor == null) return roomService.showRoomsByFilters(status, type);
-        return roomService.showRoomsByFiltersAfter(cursor, status, type);
+        return roomService.showRoomsByFiltersBefore(cursor, status, type);
     }
 
     @PostMapping
