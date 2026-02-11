@@ -61,8 +61,8 @@ public class RoomService {
     }
 
     @Transactional
-    public MessageResponseDto updateRoom(Long id, RoomUpdateDto roomUpdateDto){
-        Room room = roomRepository.findById(id)
+    public MessageResponseDto updateRoom(String roomNumber, RoomUpdateDto roomUpdateDto){
+        Room room = roomRepository.findByRoomNumber(roomNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Room not found"));
 
         room.setStatus(roomUpdateDto.status());

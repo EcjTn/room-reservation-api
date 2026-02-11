@@ -51,9 +51,9 @@ public class RoomController {
         return roomService.deleteByRoomNumber(roomNumber);
     }
 
-    @PutMapping("/{id}")
-    public MessageResponseDto updateRoom(@PathVariable Long id, @RequestBody @Valid RoomUpdateDto roomUpdateDto) {
-        return roomService.updateRoom(id, roomUpdateDto);
+    @PutMapping("/{roomNumber}")
+    public MessageResponseDto updateRoom(@PathVariable String roomNumber, @RequestBody @Valid RoomUpdateDto roomUpdateDto) {
+        return roomService.updateRoom(roomNumber, roomUpdateDto);
     }
 
 }
