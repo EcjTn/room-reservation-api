@@ -18,11 +18,9 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     public void deleteByRoomNumber(String roomNumber);
 
     public List<Room> findTop10ByOrderByIdDesc();
-
     public List<Room> findTop10ByIdLessThanOrderByIdDesc(Long lastSeenId);
 
-    public List<Room> findTop10ByStatusAndType(RoomStatus status, RoomType type);
-
+    public List<Room> findTop10ByStatusAndTypeOrderByIdDesc(RoomStatus status, RoomType type);
     public List<Room> findTop10ByStatusAndTypeAndIdLessThanOrderByIdDesc(RoomStatus status, RoomType type, Long lastSeenId);
 
     @Modifying

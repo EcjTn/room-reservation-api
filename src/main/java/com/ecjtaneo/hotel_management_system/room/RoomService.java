@@ -42,7 +42,7 @@ public class RoomService {
     }
 
     public List<RoomPublicResponseDto> showRoomsByFilters(RoomStatus status, RoomType type) {
-        return roomMapper.toDtoList(roomRepository.findTop10ByStatusAndType(status, type));
+        return roomMapper.toDtoList(roomRepository.findTop10ByStatusAndTypeOrderByIdDesc(status, type));
     }
 
     public List<RoomPublicResponseDto> showRoomsByFiltersBefore(RoomStatus status, RoomType type, Long lastSeenId) {
