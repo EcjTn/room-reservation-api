@@ -10,6 +10,6 @@ public record RoomPublicResponseDto(
         String roomNumber,
         RoomStatus status,
         RoomType type,
-        BigDecimal price_per_night
+        BigDecimal pricePerNight
 ) {
 }

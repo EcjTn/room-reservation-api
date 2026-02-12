@@ -27,8 +27,8 @@ public class Room {
     @Enumerated(EnumType.STRING)
     RoomType type;
 
-    @Column(nullable = false)
-    BigDecimal price_per_night;
+    @Column(name = "price_per_night", nullable = false)
+    BigDecimal pricePerNight;
 
     LocalDateTime created_at = LocalDateTime.now();
 }

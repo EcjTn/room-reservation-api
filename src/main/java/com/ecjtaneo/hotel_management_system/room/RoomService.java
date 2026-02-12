@@ -68,7 +68,7 @@ public class RoomService {
 
         room.setStatus(roomUpdateDto.status());
         room.setType(roomUpdateDto.type());
-        room.setPrice_per_night(roomUpdateDto.price_per_night());
+        room.setPricePerNight(roomUpdateDto.price_per_night());
 
         return new MessageResponseDto("Room successfully updated.");
     }
