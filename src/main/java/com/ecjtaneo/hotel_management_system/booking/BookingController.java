@@ -31,7 +31,7 @@ public class BookingController {
         return bookingService.deleteBooking(id);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/cancel/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or bookingService.canCancelBooking(#id, principal.userId)")  //principal is automatically available in spel expressions inside @PreAuthorize
     public MessageResponseDto cancelBooking(@PathVariable("id") Long id) {
         return bookingService.cancelBooking(id);
