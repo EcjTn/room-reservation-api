@@ -23,8 +23,8 @@ public class UserBookingController {
             @AuthenticationPrincipal UserDetailsImpl userDetails) {
 
         Long userId = userDetails.getUserId();
-        if(cursor == null) return bookingService.showBookings(userId);
-        return bookingService.showBookingsBefore(cursor, userId);
+        if(cursor == null) return bookingService.getBookingsByUserId(userId);
+        return bookingService.getBookingsBeforeByUserId(cursor, userId);
     }
 
     @GetMapping("/{id}/bookings")
@@ -33,8 +33,8 @@ public class UserBookingController {
             @RequestParam(name = "cursor", required = false) Long cursor,
             @PathVariable("id") Long userId
     ) {
-        if(cursor == null) return bookingService.showBookings(userId);
-        return bookingService.showBookingsBefore(cursor, userId);
+        if(cursor == null) return bookingService.getBookingsByUserId(userId);
+        return bookingService.getBookingsBeforeByUserId(cursor, userId);
     }
 
 }

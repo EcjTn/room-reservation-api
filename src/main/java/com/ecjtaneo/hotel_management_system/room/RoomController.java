@@ -22,13 +22,13 @@ public class RoomController {
 
     @GetMapping("/{roomNumber}")
     public RoomPublicResponseDto showRoomByRoomNumber(@PathVariable String roomNumber) {
-        return roomService.findByRoomNumber(roomNumber);
+        return roomService.findRoomByRoomNumber(roomNumber);
     }
 
     @GetMapping
     public List<RoomPublicResponseDto> showRooms(@RequestParam(name = "cursor", required = false) Long cursor) {
-        if(cursor == null) return roomService.showRooms();
-        return roomService.showRoomsBefore(cursor);
+        if(cursor == null) return roomService.getRooms();
+        return roomService.getRoomsBefore(cursor);
     }
 
     @GetMapping("/filters")
@@ -37,8 +37,8 @@ public class RoomController {
             @RequestParam(name = "type", required = false, defaultValue = "SINGLE") RoomType type,
             @RequestParam(name = "cursor", required = false) Long cursor
     ) {
-        if(cursor == null) return roomService.showRoomsByFilters(status, type);
-        return roomService.showRoomsByFiltersBefore(status, type, cursor);
+        if(cursor == null) return roomService.getRoomsByFilters(status, type);
+        return roomService.getRoomsByFiltersBefore(status, type, cursor);
     }
 
     @PostMapping

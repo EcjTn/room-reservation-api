@@ -55,7 +55,7 @@ public class BookingService {
         booking.setStatus(BookingStatus.PENDING);
 
         bookingRepository.save(booking);
-        roomService.markRoomBooked(room.getRoomNumber());
+        roomService.setRoomBooked(room.getRoomNumber());
 
         return new MessageResponseDto("Booking successfully created.");
     }
@@ -73,7 +73,7 @@ public class BookingService {
 
         booking.setStatus(BookingStatus.CANCELLED);
 
-        roomService.markRoomAvailable(booking.getRoom().getRoomNumber());
+        roomService.setRoomAvailable(booking.getRoom().getRoomNumber());
 
         return new MessageResponseDto("Booking successfully cancelled.");
     }
@@ -82,11 +82,11 @@ public class BookingService {
         return bookingRepository.existsBookingByIdAndUserId(id, userId);
     }
 
-    public List<BookingPublicResponseDto> showBookings(Long userId) {
+    public List<BookingPublicResponseDto> getBookingsByUserId(Long userId) {
         return bookingRepository.findTop10ByUserIdOrderByIdDesc(userId);
     }
 
-    public List<BookingPublicResponseDto> showBookingsBefore(Long lastSeenId, Long userId) {
+    public List<BookingPublicResponseDto> getBookingsBeforeByUserId(Long lastSeenId, Long userId) {
         return bookingRepository.findTop10ByIdLessThanAndUserIdOrderByIdDesc(lastSeenId, userId);
     }
 
@@ -116,7 +116,7 @@ public class BookingService {
         Booking booking = bookingRepository.findByIdAndStatus(id, BookingStatus.PENDING)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
 
-        roomService.markRoomOccupied(booking.getRoom().getRoomNumber());
+        roomService.setRoomOccupied(booking.getRoom().getRoomNumber());
         booking.setStatus(BookingStatus.CONFIRMED);
         booking.setPaymentStatus(PaymentStatus.PAID);
 
@@ -128,7 +128,7 @@ public class BookingService {
         Booking booking = bookingRepository.findByIdAndStatus(id, BookingStatus.CONFIRMED)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
 
-        roomService.markRoomAvailable(booking.getRoom().getRoomNumber());
+        roomService.setRoomAvailable(booking.getRoom().getRoomNumber());
         booking.setStatus(BookingStatus.COMPLETED);
 
         return new MessageResponseDto("Booking successfully completed.");

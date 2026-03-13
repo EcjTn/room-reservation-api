@@ -33,23 +33,23 @@ public class RoomService {
         return new MessageResponseDto("Room successfully created.");
     }
 
-    public List<RoomPublicResponseDto> showRooms() {
+    public List<RoomPublicResponseDto> getRooms() {
         return roomMapper.toDtoList(roomRepository.findTop10ByOrderByIdDesc());
     }
 
-    public List<RoomPublicResponseDto> showRoomsBefore(Long lastSeenId) {
+    public List<RoomPublicResponseDto> getRoomsBefore(Long lastSeenId) {
         return roomMapper.toDtoList(roomRepository.findTop10ByIdLessThanOrderByIdDesc(lastSeenId));
     }
 
-    public List<RoomPublicResponseDto> showRoomsByFilters(RoomStatus status, RoomType type) {
+    public List<RoomPublicResponseDto> getRoomsByFilters(RoomStatus status, RoomType type) {
         return roomMapper.toDtoList(roomRepository.findTop10ByStatusAndTypeOrderByIdDesc(status, type));
     }
 
-    public List<RoomPublicResponseDto> showRoomsByFiltersBefore(RoomStatus status, RoomType type, Long lastSeenId) {
+    public List<RoomPublicResponseDto> getRoomsByFiltersBefore(RoomStatus status, RoomType type, Long lastSeenId) {
         return roomMapper.toDtoList(roomRepository.findTop10ByStatusAndTypeAndIdLessThanOrderByIdDesc(status, type, lastSeenId));
     }
 
-    public RoomPublicResponseDto findByRoomNumber(String roomNumber) {
+    public RoomPublicResponseDto findRoomByRoomNumber(String roomNumber) {
         return roomMapper.toDtoSingle(roomRepository.findByRoomNumber(roomNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Room not found.")));
     }
@@ -79,17 +79,17 @@ public class RoomService {
     }
 
     @Transactional
-    public int markRoomBooked(String roomNumber) {
+    public int setRoomBooked(String roomNumber) {
         return roomRepository.updateStatusByRoomNumber(roomNumber, RoomStatus.BOOKED);
     }
 
     @Transactional
-    public int markRoomOccupied(String roomNumber) {
+    public int setRoomOccupied(String roomNumber) {
         return roomRepository.updateStatusByRoomNumber(roomNumber, RoomStatus.OCCUPIED);
     }
 
     @Transactional
-    public int markRoomAvailable(String roomNumber) {
+    public int setRoomAvailable(String roomNumber) {
         return roomRepository.updateStatusByRoomNumber(roomNumber, RoomStatus.AVAILABLE);
     }
 
