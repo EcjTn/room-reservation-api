@@ -73,4 +73,4 @@ This is a RESTful API for a Room Reservation System built with Spring Boot and P
 ## 🛠️ Setup Instructions
 - Clone repository 
 - Configure environment variables in docker-compose.yml (or application.yml)
-- Run `docker-compose up` to start the application
+- Run `docker compose up` to start the application
