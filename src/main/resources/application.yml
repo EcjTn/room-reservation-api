@@ -16,9 +16,10 @@ spring:
   cache:
     type: redis
 
-  redis:
-    host: ${SPRING_DATA_REDIS_HOST:localhost}
-    port: ${SPRING_DATA_REDIS_PORT:6379}
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
 
 recaptcha:
   secret: ${RECAPTCHA_SECRET}
