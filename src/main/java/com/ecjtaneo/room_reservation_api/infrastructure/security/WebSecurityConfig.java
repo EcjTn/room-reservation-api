@@ -3,8 +3,6 @@ package com.ecjtaneo.room_reservation_api.infrastructure.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,9 +21,9 @@ public class WebSecurityConfig {
                 .csrf(c -> c
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                         .ignoringRequestMatchers("/auth/register"))
-                .formLogin(f -> f.disable())
+                .formLogin(f -> f.loginProcessingUrl("/auth/login"))
                 .httpBasic(h -> h.disable())
-                .logout(l -> l.disable())
+                .logout(l -> l.logoutUrl("/auth/logout"))
                 .authorizeHttpRequests(a -> a
                         .requestMatchers("/auth/logout").authenticated()
                         .requestMatchers("/auth/**").permitAll()
@@ -48,10 +46,5 @@ public class WebSecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration a) {
-        return a.getAuthenticationManager();
     }
 }
