@@ -22,7 +22,7 @@ public class WebSecurityConfig {
                 .cors(cors -> {})
                 .csrf(c -> c
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        .ignoringRequestMatchers("/api/register"))
+                        .ignoringRequestMatchers("/auth/register"))
                 .formLogin(f -> f.disable())
                 .httpBasic(h -> h.disable())
                 .logout(l -> l.disable())
