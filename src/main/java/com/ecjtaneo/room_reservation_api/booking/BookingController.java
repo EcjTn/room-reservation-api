@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/bookings")
@@ -20,11 +19,6 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping
-    public List<BookingPublicResponseDto> showBookings(@RequestParam(name = "cursor", required = false) Long cursor) {
-        if(cursor == null) return bookingService.getRecentBookings();
-        return bookingService.getRecentBookingsBefore(cursor);
-    }
 
     @PostMapping
     public MessageResponseDto createBooking(
