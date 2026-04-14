@@ -8,6 +8,7 @@ This is a RESTful API for a Room Reservation System built with Spring Boot and P
   <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" />
   <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/JUnit%205-25A162?style=for-the-badge&logo=junit5&logoColor=white" />
 </p>
 
 ---
@@ -21,6 +22,8 @@ This is a RESTful API for a Room Reservation System built with Spring Boot and P
 - **PostgreSQL**: Stores reservation data reliably with strong data integrity.
 - **Redis**: Caches frequently accessed data to improve performance and reduce load.
 - **Docker**: Containerizes the application for consistent deployment across environments.
+- **JUnit 5**: Provides a testing framework for unit and integration tests to ensure code quality and reliability.
+- **Mockito**: Used for mocking dependencies in unit tests, allowing for isolated testing of components.
 - **Vertical Slice Architecture**: Organizes features into modular slices with all necessary components per functionality.
 
 ---
@@ -70,6 +73,7 @@ This is a RESTful API for a Room Reservation System built with Spring Boot and P
 - **Cursor-based Pagination**: Enables efficient and scalable room listing by loading records in chunks using cursors instead of fetching all at once.
 - **Global Exception Handling**: Centralized error handling for consistent API responses.
 - **RBAC Enforcement**: Secured endpoints based on user roles (guest/admin).
+- **Testing**: Unit tests with JUnit 5 and Mockito to ensure code quality and reliability. (Booking service and Room service only)
 
 ## 🛠️ Setup Instructions
 - Clone repository 
