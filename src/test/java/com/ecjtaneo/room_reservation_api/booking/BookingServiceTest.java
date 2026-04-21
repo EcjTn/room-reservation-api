@@ -59,7 +59,7 @@ class BookingServiceTest {
 
         MessageResponseDto result = bookingService.createBooking(dto, userId);
 
-        assertEquals("Booking successfully created. 012345678", result.message());
+        assertEquals("Booking successfully created.", result.message());
         verify(roomService).setRoomBookedIfAvailable("101");
         verify(roomService).getRoomReferenceByRoom("101");
         verify(userService).getUserReference(userId);
