@@ -1,4 +1,5 @@
 # Room Reservation System API
+[![ci](https://github.com/EcjTn/room-reservation-system-api/actions/workflows/ci.yml/badge.svg)](https://github.com/EcjTn/room-reservation-system-api/actions/workflows/ci.yml)
 
 This is a RESTful API for a Room Reservation System built with Spring Boot and PostgreSQL, enabling users to create, read, update, and delete reservations efficiently. It combines Spring Boot’s structured architecture with PostgreSQL’s reliable data storage for seamless reservation management.
 
